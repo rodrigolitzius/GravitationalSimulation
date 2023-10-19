@@ -60,7 +60,7 @@ int main() {
         {
             {-7, 0}, {0, 0},
             {WINDOW_X_CENTER, 170}, 15, 1
-        } // Middle orbit
+        }, // Middle orbit
 	};
 
 	int body_count = sizeof(body_list) / sizeof(Body);
@@ -78,10 +78,14 @@ int main() {
         ///////////////////////////////////////////////
         ///////////////////////////////////////////////
         ///////////////////////////////////////////////
+        
+        // Drawing grid
+        SDL_SetRenderDrawColor(renderer, GRID_COLOR);
+        draw_background_grid(renderer);
 
+        ////// Looping over all bodies //////
         SDL_SetRenderDrawColor(renderer, WHITE);
 
-        // Sorry, couldn't think of a better name for the iterator variables
         for (int primary=0; primary < body_count; primary++) {
             // Drawing primary body
             draw_polygon(renderer, 
@@ -94,7 +98,6 @@ int main() {
 
             // Calculating the gravitaional attraction every other
             // body (Secondary bodies) exerts on primary body
-
             for (int secondary=0; secondary < body_count; secondary++) {
                 // Do not let a body exert a force on itself
                 if (secondary == primary) { continue; }
@@ -123,7 +126,7 @@ int main() {
 		SDL_RenderPresent(renderer);
 
         // Clearing window
-		SDL_SetRenderDrawColor(renderer, GRAY);
+		SDL_SetRenderDrawColor(renderer, BACKGROUND_COLOR);
 		SDL_RenderClear(renderer);
 
         ////// Buncha frame stuff //////
@@ -145,6 +148,9 @@ int main() {
     }
 
     // Quitting
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+
     SDL_Quit();
 
     return EXIT_SUCCESS;

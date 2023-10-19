@@ -1,9 +1,3 @@
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_hints.h>
-#include <SDL2/SDL_keycode.h>
-#include <SDL2/SDL_mouse.h>
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_video.h>
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <stdio.h>
@@ -143,4 +137,14 @@ double get_distance(SDL_FPoint pos1, SDL_FPoint pos2) {
 
 bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2) {
 	return get_distance(pos1, pos2) <= radius1 + radius2;
+}
+
+void draw_background_grid(SDL_Renderer* renderer) {
+	for (int i=0; i < window_width; i+=20) {
+        SDL_RenderDrawLine(renderer, i, 0, i, window_height);
+    }
+
+	for (int i=0; i < window_width; i+=20) {
+		SDL_RenderDrawLine(renderer, 0, i, window_width, i);
+	}
 }

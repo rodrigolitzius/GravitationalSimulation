@@ -26,4 +26,6 @@ bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2
 // Return the acceleration exerted on body1 by body2
 Vector2 gravity(Body body1, Body body2);
 
+void draw_background_grid(SDL_Renderer* renderer);
+
 #endif

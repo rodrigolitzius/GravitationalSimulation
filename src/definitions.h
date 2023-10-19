@@ -14,9 +14,12 @@
 #define WINDOW_X_CENTER window_width/2.0f
 #define WINDOW_Y_CENTER window_height/2.0f
 
+#define BACKGROUND_COLOR 0,0,0,255
+#define GRID_COLOR 20,20,20,255
+
+#define WHITE 255,255,255,255
 #define BLACK 0,0,0,255
 #define GRAY 50,50,50,255
-#define WHITE 255,255,255,255
 
 #define RED 255,0,0,255
 #define GREEN 0,255,0,255
