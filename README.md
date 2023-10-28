@@ -1,7 +1,7 @@
 # Gravitational Simulation
 A simple SDL2 project to simulate Newtonian gravity. You can add as many bodies in the simulation as you like.
 
-Please understand that, for now, this is just a WIP project. The only thing that actually works is the gravity.
+Please understand that, for now, this is just a WIP project.
 
 # How to play
 Currently, you have to edit the source code to add bodies to the simulation. You only have to add more structs to a struct array and it's done. I'll implement an easier way to do this in the future, though.
