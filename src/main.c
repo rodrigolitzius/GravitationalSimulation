@@ -44,22 +44,22 @@ int main() {
 	Body body_list[] = {
         {
             {0, 0}, {0, 0},
-            {WINDOW_CENTER}, 30, 10000000
+            {WINDOW_CENTER}, 30, 10000000, {ORANGE}
         }, // Sun
 
         {
             {6, 0}, {0, 0},
-            {WINDOW_X_CENTER, 60}, 20, 1
+            {WINDOW_X_CENTER, 60}, 20, 1, {DARK_BLUE}
         }, // Higher orbit
 
         {
             {0, 11.5}, {0, 0},
-            {(WINDOW_X_CENTER + 70), WINDOW_Y_CENTER}, 10, 1
+            {(WINDOW_X_CENTER + 70), WINDOW_Y_CENTER}, 10, 1, {BROWN}
         }, // Lower orbit
 
         {
             {-7, 0}, {0, 0},
-            {WINDOW_X_CENTER, 170}, 15, 1
+            {WINDOW_X_CENTER, 170}, 15, 1, {BLUE}
         }, // Middle orbit
 	};
 
@@ -84,9 +84,13 @@ int main() {
         draw_background_grid(renderer);
 
         ////// Looping over all bodies //////
-        SDL_SetRenderDrawColor(renderer, WHITE);
 
         for (int primary=0; primary < body_count; primary++) {
+            SDL_SetRenderDrawColor(renderer, 
+                body_list[primary].color.r, body_list[primary].color.g,
+                body_list[primary].color.b, body_list[primary].color.a
+            );
+
             // Drawing primary body
             draw_polygon(renderer, 
                 body_list[primary].position, body_list[primary].size,
