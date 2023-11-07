@@ -3,6 +3,9 @@ A simple SDL2 project to simulate Newtonian gravity. You can add as many bodies 
 
 Please understand that, for now, this is just a WIP project.
 
+**Screenshot**:
+![](image.png)
+
 # How to play
 Currently, you have to edit the source code to add bodies to the simulation. You only have to add more structs to a struct array and it's done. I'll implement an easier way to do this in the future, though.
 
