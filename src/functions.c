@@ -17,7 +17,7 @@ void initialize(SDL_Window** window, SDL_Renderer** renderer) {
 	*window = SDL_CreateWindow(
 		"Game",
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		window_width,            window_height,
+		WINDOW_WIDTH,            WINDOW_HEIGHT,
 		0
 	);
 
@@ -41,13 +41,6 @@ void handle_events() {
 
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_QUIT) { running = false; }
-
-		if (event.type == SDL_WINDOWEVENT) {
-			if (event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED) {
-				window_width = event.window.data1;
-				window_height = event.window.data2;
-			}
-		}
 
 		if (event.type == SDL_KEYDOWN) {
 			if (event.key.keysym.sym == SDLK_p) {
@@ -140,11 +133,11 @@ bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2
 }
 
 void draw_background_grid(SDL_Renderer* renderer) {
-	for (int i=0; i < window_width; i+=20) {
-        SDL_RenderDrawLine(renderer, i, 0, i, window_height);
+	for (int i=0; i < WINDOW_WIDTH; i+=20) {
+        SDL_RenderDrawLine(renderer, i, 0, i, WINDOW_HEIGHT);
     }
 
-	for (int i=0; i < window_width; i+=20) {
-		SDL_RenderDrawLine(renderer, 0, i, window_width, i);
+	for (int i=0; i < WINDOW_WIDTH; i+=20) {
+		SDL_RenderDrawLine(renderer, 0, i, WINDOW_WIDTH, i);
 	}
 }

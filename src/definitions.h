@@ -11,9 +11,17 @@
 
 #define PI 3.14159265358979323846
 
-#define WINDOW_CENTER window_width/2.0f,window_height/2.0f
-#define WINDOW_X_CENTER window_width/2.0f
-#define WINDOW_Y_CENTER window_height/2.0f
+enum BodyFlags {
+    IMMOVABLE = 1 << 0,
+    INVISIBLE = 1 << 1,
+};
+
+#define WINDOW_WIDTH 700
+#define WINDOW_HEIGHT 700
+
+#define WINDOW_X_CENTER WINDOW_WIDTH/2.0f
+#define WINDOW_Y_CENTER WINDOW_HEIGHT/2.0f
+#define WINDOW_CENTER WINDOW_X_CENTER,WINDOW_Y_CENTER
 
 #define BACKGROUND_COLOR 0,0,0,255
 #define GRID_COLOR 20,20,20,255
@@ -31,10 +39,7 @@
 #define BLUE 0,0,255,255
 
 typedef struct { double x, y; } Vector2;
-typedef struct { Vector2 velocity; Vector2 accel; SDL_FPoint position; int size; double mass; SDL_Color color; } Body;
-
-extern int window_width;
-extern int window_height;
+typedef struct { Vector2 accel; Vector2 velocity; SDL_FPoint position; int size; double mass; SDL_Color color; unsigned int flags; } Body;
 
 extern Uint64 frames_elapsed;
 
