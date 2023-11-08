@@ -114,11 +114,11 @@ int main() {
         draw(renderer);
 
         // Updating window
-		SDL_RenderPresent(renderer);
+        SDL_RenderPresent(renderer);
 
         // Clearing window
-		SDL_SetRenderDrawColor(renderer, BACKGROUND_COLOR);
-		SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, BACKGROUND_COLOR);
+        SDL_RenderClear(renderer);
 
         ///////////////////////////////////
         ///////////////////////////////////
