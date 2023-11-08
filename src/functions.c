@@ -15,7 +15,7 @@ void initialize(SDL_Window** window, SDL_Renderer** renderer) {
 
 	// Creating window
 	*window = SDL_CreateWindow(
-		"Game",
+		PROGRAM_NAME,
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 		WINDOW_WIDTH,            WINDOW_HEIGHT,
 		0
@@ -133,11 +133,11 @@ bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2
 }
 
 void draw_background_grid(SDL_Renderer* renderer) {
-	for (int i=0; i < WINDOW_WIDTH; i+=20) {
+	for (int i=0; i < WINDOW_WIDTH; i+=GRID_SPACING_PIXELS) {
         SDL_RenderDrawLine(renderer, i, 0, i, WINDOW_HEIGHT);
     }
 
-	for (int i=0; i < WINDOW_WIDTH; i+=20) {
+	for (int i=0; i < WINDOW_WIDTH; i+=GRID_SPACING_PIXELS) {
 		SDL_RenderDrawLine(renderer, 0, i, WINDOW_WIDTH, i);
 	}
 }
