@@ -73,14 +73,14 @@ void draw_polygon(SDL_Renderer* renderer, SDL_FPoint pos, int radius, int sides)
 	double angle = 0;
 	double angle_add = (2*PI)/sides;
 
-	for (int i=0; i < sides; i++) {
-		SDL_Vertex point1 = {
-			{
-				pos.x, 
-				pos.y
-			}, color, {1, 1}
-		};
+	SDL_Vertex center_point = {
+		{
+			pos.x, 
+			pos.y
+		}, color, {1, 1}
+	};
 
+	for (int i=0; i < sides; i++) {
 		SDL_Vertex point2 = {
 			{
 				(cos(angle)*radius)+pos.x, 
@@ -95,7 +95,7 @@ void draw_polygon(SDL_Renderer* renderer, SDL_FPoint pos, int radius, int sides)
 			}, color, {1,1}
 		};
 
-		SDL_Vertex points[] = {point1, point2, point3};
+		SDL_Vertex points[] = {center_point, point2, point3};
 
 		SDL_RenderGeometry(renderer, NULL, points, 3, NULL, 0);
 
