@@ -36,14 +36,6 @@
 #define DARK_BLUE 0,33,113,255
 
 typedef struct { double x, y; } Vector2;
-typedef struct { Vector2 accel; Vector2 velocity; SDL_FPoint position; int size; double mass; SDL_Color color; unsigned int flags; } Body;
-
-enum BodyFlags {
-    IMMOVABLE = 1 << 0,
-    INVISIBLE = 1 << 1,
-};
-
-extern Uint64 frames_elapsed;
 
 extern bool running;
 extern bool pause;
