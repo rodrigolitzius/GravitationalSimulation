@@ -32,7 +32,7 @@ int main() {
     initialize(&window, &renderer); 
 
     // Variables used within the game loop
-    Uint64 frame_start=0, frame_end=0, current_frame_time=0;
+    Uint64 frame_start=0, frame_end=0, frame_time=0;
     Uint64 frame_time_sum=0;
     Uint64 frequency = SDL_GetPerformanceFrequency();
 
@@ -65,10 +65,10 @@ int main() {
         frames_elapsed++;
         frame_end = SDL_GetPerformanceCounter();
 
-        current_frame_time = frame_end - frame_start;
-        current_frame_time += limit_fps(current_frame_time, frequency);
+        frame_time = frame_end - frame_start;
+        frame_time += limit_fps(frame_time, frequency);
 
-        frame_time_sum += current_frame_time;
+        frame_time_sum += frame_time;
 
         // Printing the average FPS over a period of PRINT_FPS_DELAY_FRAMES frames
         if (frames_elapsed % PRINT_FPS_DELAY_FRAMES == 0) {
