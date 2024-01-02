@@ -28,21 +28,21 @@ Body body_list[] = {
 int body_count = sizeof(body_list) / sizeof(Body);
 
 Vector2 gravity(Body body1, Body body2) {
-	// Phytagorean theorem to get the distance from body1 to body2
-	double x_distance = body2.position.x - body1.position.x;
-	double y_distance = body2.position.y - body1.position.y;
+    // Phytagorean theorem to get the distance from body1 to body2
+    double x_distance = body2.position.x - body1.position.x;
+    double y_distance = body2.position.y - body1.position.y;
 
-	double distance = sqrt((x_distance * x_distance) + (y_distance * y_distance));
+    double distance = sqrt((x_distance * x_distance) + (y_distance * y_distance));
 
-	// Newton's laws to get the acceleration
-	double force = BIG_G * (body1.mass * body2.mass) / (distance*distance);
-	double accel = force / body1.mass;
+    // Newton's laws to get the acceleration
+    double force = BIG_G * (body1.mass * body2.mass) / (distance*distance);
+    double accel = force / body1.mass;
 
-	// Triangle similarity to convert accel into accel_x and accel_y
-	double accel_x = x_distance * accel / distance;
-	double accel_y = y_distance * accel / distance;
+    // Triangle similarity to convert accel into accel_x and accel_y
+    double accel_x = x_distance * accel / distance;
+    double accel_y = y_distance * accel / distance;
 
-	return (Vector2){accel_x, accel_y};
+    return (Vector2){accel_x, accel_y};
 }
 
 void update_bodies() {
