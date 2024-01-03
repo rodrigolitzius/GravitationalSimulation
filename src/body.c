@@ -77,7 +77,7 @@ void update_bodies() {
     }
 }
 
-void draw_bodies(SDL_Renderer* renderer, SDL_FPoint scrolling) {
+void draw_bodies(SDL_Renderer* renderer, SDL_FPoint scroll) {
     for (int i=0; i < body_count; i++) {
         // If this body is marked as invisble, don't draw it
         if (body_list[i].flags & INVISIBLE) { continue; }
@@ -89,8 +89,8 @@ void draw_bodies(SDL_Renderer* renderer, SDL_FPoint scrolling) {
 
         draw_polygon(renderer, 
             (SDL_FPoint){
-                body_list[i].position.x + scrolling.x,
-                body_list[i].position.y + scrolling.y
+                body_list[i].position.x + scroll.x,
+                body_list[i].position.y + scroll.y
             },
 
             body_list[i].size, 

@@ -3,10 +3,7 @@
 
 #include "SDL2/SDL.h"
 
-SDL_FPoint get_scrolling();
-void scroll_right();
-void scroll_left();
-void scroll_up();
-void scroll_down();
+SDL_FPoint get_scroll();
+void scroll_mouse(SDL_MouseMotionEvent motion);
 
 #endif

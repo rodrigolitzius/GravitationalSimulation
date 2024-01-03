@@ -38,9 +38,10 @@ void handle_events() {
 ////// On event //////
 void on_keydown(SDL_Event event, void* data) {
     if (event.key.keysym.sym == SDLK_p) { pause = !pause; }
+}
 
-    if (event.key.keysym.sym == SDLK_d) { scroll_right(); }
-    if (event.key.keysym.sym == SDLK_a) { scroll_left(); }
-    if (event.key.keysym.sym == SDLK_w) { scroll_up(); }
-    if (event.key.keysym.sym == SDLK_s) { scroll_down(); }
+void on_mouse_motion(SDL_Event event, void* data) {
+    if (event.motion.state & SDL_BUTTON(1)) {
+        scroll_mouse(event.motion);
+    }
 }

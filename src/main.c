@@ -22,12 +22,12 @@ void update() {
 }
 
 void draw(SDL_Renderer* renderer) {
-    SDL_FPoint scrolling = get_scrolling();
+    SDL_FPoint scroll = get_scroll();
 
     SDL_SetRenderDrawColor(renderer, GRID_COLOR);
     draw_background_grid(renderer);
 
-    draw_bodies(renderer, scrolling);
+    draw_bodies(renderer, scroll);
 }
 
 int main() {
@@ -40,6 +40,7 @@ int main() {
 
     // Registering event callbacks
     register_callback((event_handler_callback){SDL_KEYDOWN, &on_keydown});
+    register_callback((event_handler_callback){SDL_MOUSEMOTION, &on_mouse_motion});
 
     // Variables used within the game loop
     Uint64 frame_start=0, frame_end=0, frame_time=0;
