@@ -37,25 +37,6 @@ void initialize(SDL_Window** window, SDL_Renderer** renderer) {
     }
 }
 
-void handle_events() {
-    SDL_Event event;
-
-    while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) { running = false; }
-
-        if (event.type == SDL_KEYDOWN) {
-            if (event.key.keysym.sym == SDLK_p) {
-                pause = !pause;
-            }
-
-            if (event.key.keysym.sym == SDLK_d) { scroll_right(); }
-            if (event.key.keysym.sym == SDLK_a) { scroll_left(); }
-            if (event.key.keysym.sym == SDLK_w) { scroll_up(); }
-            if (event.key.keysym.sym == SDLK_s) { scroll_down(); }
-        }
-    }
-}
-
 Uint64 limit_fps(Uint64 frame_time, Uint64 frequency) {
     double target_framerate = (double) frequency / MAX_FPS;
     double wait_time = target_framerate - frame_time;

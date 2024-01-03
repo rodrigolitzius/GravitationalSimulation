@@ -1,3 +1,4 @@
+#include <SDL2/SDL_events.h>
 #include <SDL2/SDL_rect.h>
 #include <math.h>
 #include <stdio.h>
@@ -6,6 +7,7 @@
 #include <SDL2/SDL.h>
 
 #include "functions.h"
+#include "event-handler.h"
 #include "definitions.h"
 #include "body.h"
 #include "scroller.h"
@@ -33,7 +35,11 @@ int main() {
     SDL_Window* window;
     SDL_Renderer* renderer;
 
-    initialize(&window, &renderer); 
+    initialize(&window, &renderer);
+    initialize_event_handler();
+
+    // Registering event callbacks
+    register_callback((event_handler_callback){SDL_KEYDOWN, &on_keydown});
 
     // Variables used within the game loop
     Uint64 frame_start=0, frame_end=0, frame_time=0;
@@ -43,6 +49,10 @@ int main() {
     ///// Main Loop /////
     while (running) {
         frame_start = SDL_GetPerformanceCounter();
+
+        // Clearing window
+        SDL_SetRenderDrawColor(renderer, BACKGROUND_COLOR);
+        SDL_RenderClear(renderer);
 
         handle_events();
 
@@ -57,10 +67,6 @@ int main() {
 
         // Updating window
         SDL_RenderPresent(renderer);
-
-        // Clearing window
-        SDL_SetRenderDrawColor(renderer, BACKGROUND_COLOR);
-        SDL_RenderClear(renderer);
 
         ///////////////////////////////////
         ///////////////////////////////////
