@@ -30,6 +30,10 @@ void draw(SDL_Renderer* renderer) {
     draw_bodies(renderer, scroll);
 }
 
+void test(SDL_Event a, void* b) {
+    printf("A\n");
+}
+
 int main() {
     // Creating window and renderer
     SDL_Window* window;
@@ -41,6 +45,7 @@ int main() {
     // Registering event callbacks
     register_callback((event_handler_callback){SDL_KEYDOWN, &on_keydown});
     register_callback((event_handler_callback){SDL_MOUSEMOTION, &on_mouse_motion});
+    register_callback((event_handler_callback){SDL_MOUSEBUTTONUP, &on_mouseup});
 
     // Variables used within the game loop
     Uint64 frame_start=0, frame_end=0, frame_time=0;

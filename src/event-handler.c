@@ -1,3 +1,4 @@
+#include <SDL2/SDL_events.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,8 +41,13 @@ void on_keydown(SDL_Event event, void* data) {
     if (event.key.keysym.sym == SDLK_p) { pause = !pause; }
 }
 
+void on_mouseup(SDL_Event event, void* data) {
+    SDL_SetRelativeMouseMode(SDL_FALSE);
+}
+
 void on_mouse_motion(SDL_Event event, void* data) {
     if (event.motion.state & SDL_BUTTON(1)) {
+        SDL_SetRelativeMouseMode(SDL_TRUE);
         scroll_mouse(event.motion);
     }
 }
