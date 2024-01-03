@@ -40,7 +40,6 @@ int main() {
     SDL_Renderer* renderer;
 
     initialize(&window, &renderer);
-    initialize_event_handler();
 
     // Registering event callbacks
     register_callback((event_handler_callback){SDL_KEYDOWN, &on_keydown});

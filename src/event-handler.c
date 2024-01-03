@@ -9,10 +9,6 @@
 event_handler_callback* callbacks;
 int callbacks_length = 0;
 
-void initialize_event_handler() {
-    callbacks = malloc(callbacks_length);
-}
-
 void register_callback(event_handler_callback handler) {
     printf("%d\n", callbacks_length+1);
 

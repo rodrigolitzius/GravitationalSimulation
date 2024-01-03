@@ -9,7 +9,6 @@ typedef struct {
     event_handler* handler;
 } event_handler_callback;
 
-void initialize_event_handler();
 void register_callback(event_handler_callback handler);
 void handle_events();
 
