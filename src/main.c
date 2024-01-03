@@ -1,3 +1,4 @@
+#include <SDL2/SDL_rect.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,6 +8,7 @@
 #include "functions.h"
 #include "definitions.h"
 #include "body.h"
+#include "scroller.h"
 
 bool running = true;
 bool pause = false;
@@ -18,10 +20,12 @@ void update() {
 }
 
 void draw(SDL_Renderer* renderer) {
+    SDL_FPoint scrolling = get_scrolling();
+
     SDL_SetRenderDrawColor(renderer, GRID_COLOR);
     draw_background_grid(renderer);
 
-    draw_bodies(renderer);
+    draw_bodies(renderer, scrolling);
 }
 
 int main() {

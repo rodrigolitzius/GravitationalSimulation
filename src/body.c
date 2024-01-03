@@ -1,7 +1,8 @@
+#include <SDL2/SDL.h>
+
 #include "definitions.h"
 #include "functions.h"
 #include "body.h"
-#include <SDL2/SDL.h>
 
 Body body_list[] = {
     {
@@ -76,7 +77,7 @@ void update_bodies() {
     }
 }
 
-void draw_bodies(SDL_Renderer* renderer) {
+void draw_bodies(SDL_Renderer* renderer, SDL_FPoint scrolling) {
     for (int i=0; i < body_count; i++) {
         // If this body is marked as invisble, don't draw it
         if (body_list[i].flags & INVISIBLE) { continue; }
@@ -86,6 +87,14 @@ void draw_bodies(SDL_Renderer* renderer) {
             body_list[i].color.b, body_list[i].color.a
         );
 
-        draw_polygon(renderer, body_list[i].position, body_list[i].size, body_list[i].size);
+        draw_polygon(renderer, 
+            (SDL_FPoint){
+                body_list[i].position.x + scrolling.x,
+                body_list[i].position.y + scrolling.y
+            },
+
+            body_list[i].size, 
+            body_list[i].size
+        );
     }
 }
