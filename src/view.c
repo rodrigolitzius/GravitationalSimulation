@@ -6,7 +6,7 @@
 
 View view = {{0, 0}, 1};
 
-View get_scroll() {
+View get_view() {
     return view;
 }
 

@@ -22,7 +22,7 @@ void update() {
 }
 
 void draw(SDL_Renderer* renderer) {
-    View view = get_scroll();
+    View view = get_view();
 
     SDL_SetRenderDrawColor(renderer, GRID_COLOR);
     draw_background_grid(renderer);
