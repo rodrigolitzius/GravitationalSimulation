@@ -4,7 +4,7 @@
 
 #include "event-handler.h"
 #include "definitions.h"
-#include "scroller.h"
+#include "view.h"
 
 event_handler_callback* callbacks;
 int callbacks_length = 0;
@@ -41,9 +41,13 @@ void on_mouseup(SDL_Event event, void* data) {
     SDL_SetRelativeMouseMode(SDL_FALSE);
 }
 
+void on_mousewheel(SDL_Event event, void* data) {
+    change_view_scale(event.wheel);
+}
+
 void on_mouse_motion(SDL_Event event, void* data) {
-    if (event.motion.state & SDL_BUTTON(1)) {
+    if (event.motion.state & SDL_BUTTON(3)) {
         SDL_SetRelativeMouseMode(SDL_TRUE);
-        scroll_mouse(event.motion);
+        move_view(event.motion);
     }
 }

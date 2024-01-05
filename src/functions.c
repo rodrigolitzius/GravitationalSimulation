@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #include "definitions.h"
-#include "scroller.h"
+#include "view.h"
 
 void initialize(SDL_Window** window, SDL_Renderer** renderer) {
     SDL_SetHint(SDL_HINT_VIDEODRIVER, "wayland,x11");

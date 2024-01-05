@@ -10,7 +10,7 @@
 #include "event-handler.h"
 #include "definitions.h"
 #include "body.h"
-#include "scroller.h"
+#include "view.h"
 
 bool running = true;
 bool pause = false;
@@ -22,16 +22,12 @@ void update() {
 }
 
 void draw(SDL_Renderer* renderer) {
-    SDL_FPoint scroll = get_scroll();
+    View view = get_scroll();
 
     SDL_SetRenderDrawColor(renderer, GRID_COLOR);
     draw_background_grid(renderer);
 
-    draw_bodies(renderer, scroll);
-}
-
-void test(SDL_Event a, void* b) {
-    printf("A\n");
+    draw_bodies(renderer, view);
 }
 
 int main() {
@@ -45,6 +41,7 @@ int main() {
     register_callback((event_handler_callback){SDL_KEYDOWN, &on_keydown});
     register_callback((event_handler_callback){SDL_MOUSEMOTION, &on_mouse_motion});
     register_callback((event_handler_callback){SDL_MOUSEBUTTONUP, &on_mouseup});
+    register_callback((event_handler_callback){SDL_MOUSEWHEEL, &on_mousewheel});
 
     // Variables used within the game loop
     Uint64 frame_start=0, frame_end=0, frame_time=0;
