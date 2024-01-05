@@ -1,4 +1,5 @@
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_rect.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -35,6 +36,11 @@ void handle_events() {
 ////// On event //////
 void on_keydown(SDL_Event event, void* data) {
     if (event.key.keysym.sym == SDLK_p) { pause = !pause; }
+
+    if (event.key.keysym.sym == SDLK_c) {
+        set_view((SDL_FPoint){0, 0});
+        set_view_scale(1);
+    }
 }
 
 void on_mouseup(SDL_Event event, void* data) {
@@ -42,12 +48,12 @@ void on_mouseup(SDL_Event event, void* data) {
 }
 
 void on_mousewheel(SDL_Event event, void* data) {
-    change_view_scale(event.wheel);
+    change_view_scale(event.wheel.y);
 }
 
 void on_mouse_motion(SDL_Event event, void* data) {
     if (event.motion.state & SDL_BUTTON(3)) {
         SDL_SetRelativeMouseMode(SDL_TRUE);
-        move_view(event.motion);
+        change_view((SDL_FPoint){event.motion.xrel, event.motion.yrel});
     }
 }

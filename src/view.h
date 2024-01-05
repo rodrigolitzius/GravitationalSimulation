@@ -8,7 +8,9 @@ typedef struct {
 } View;
 
 View* get_view();
-void move_view(SDL_MouseMotionEvent motion);
-void change_view_scale(SDL_MouseWheelEvent wheel);
+void set_view(SDL_FPoint draw_offset);
+void set_view_scale(double scale);
+void change_view(SDL_FPoint change);
+void change_view_scale(double change);
 
 #endif

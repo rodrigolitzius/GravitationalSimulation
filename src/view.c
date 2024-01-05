@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_rect.h>
 
 #include "definitions.h"
 #include "view.h"
@@ -10,13 +11,21 @@ View* get_view() {
     return &view;
 }
 
-void move_view(SDL_MouseMotionEvent motion) {
-    view.draw_offset.x += motion.xrel / view.scale;
-    view.draw_offset.y += motion.yrel / view.scale;
+void set_view(SDL_FPoint draw_offset) {
+    view.draw_offset = draw_offset;
 }
 
-void change_view_scale(SDL_MouseWheelEvent wheel) {
-    view.scale += wheel.y * 0.05;
+void set_view_scale(double scale) {
+    view.scale = scale;
+}
+
+void change_view(SDL_FPoint change) {
+    view.draw_offset.x += change.x / view.scale;
+    view.draw_offset.y += change.y / view.scale;
+}
+
+void change_view_scale(double change) {
+    view.scale += change * 0.05;
     if (view.scale < 0) {
         view.scale = 0;
     }
