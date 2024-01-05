@@ -6,8 +6,8 @@
 
 View view = {{0, 0}, 1};
 
-View get_view() {
-    return view;
+View* get_view() {
+    return &view;
 }
 
 void move_view(SDL_MouseMotionEvent motion) {

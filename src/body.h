@@ -20,6 +20,6 @@ Vector2 gravity(Body body1, Body body2);
 void update_bodies();
 
 // Draw all bodies
-void draw_bodies(SDL_Renderer* renderer, View view);
+void draw_bodies(SDL_Renderer* renderer, View* view);
 
 #endif

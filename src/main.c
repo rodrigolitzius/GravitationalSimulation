@@ -21,9 +21,7 @@ void update() {
     update_bodies();
 }
 
-void draw(SDL_Renderer* renderer) {
-    View view = get_view();
-
+void draw(SDL_Renderer* renderer, View* view) {
     SDL_SetRenderDrawColor(renderer, GRID_COLOR);
     draw_background_grid(renderer);
 
@@ -36,6 +34,7 @@ int main() {
     SDL_Renderer* renderer;
 
     initialize(&window, &renderer);
+    View* view = get_view();
 
     // Registering event callbacks
     register_callback((event_handler_callback){SDL_KEYDOWN, &on_keydown});
@@ -65,7 +64,7 @@ int main() {
         ///////////////////////////////////
 
         update();
-        draw(renderer);
+        draw(renderer, view);
 
         // Updating window
         SDL_RenderPresent(renderer);

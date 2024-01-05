@@ -7,7 +7,7 @@ typedef struct {
     SDL_FPoint draw_offset; double scale;
 } View;
 
-View get_view();
+View* get_view();
 void move_view(SDL_MouseMotionEvent motion);
 void change_view_scale(SDL_MouseWheelEvent wheel);
 

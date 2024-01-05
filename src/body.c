@@ -78,7 +78,7 @@ void update_bodies() {
     }
 }
 
-void draw_bodies(SDL_Renderer* renderer, View view) {
+void draw_bodies(SDL_Renderer* renderer, View* view) {
     for (int i=0; i < body_count; i++) {
         // If this body is marked as invisble, don't draw it
         if (body_list[i].flags & INVISIBLE) { continue; }
@@ -90,12 +90,12 @@ void draw_bodies(SDL_Renderer* renderer, View view) {
 
         draw_polygon(renderer, 
             (SDL_FPoint){
-                (body_list[i].position.x + view.draw_offset.x) * view.scale,
-                (body_list[i].position.y + view.draw_offset.y) * view.scale
+                (body_list[i].position.x + view->draw_offset.x) * view->scale,
+                (body_list[i].position.y + view->draw_offset.y) * view->scale
             },
 
-            body_list[i].size * view.scale,
-            body_list[i].size * view.scale * 2
+            body_list[i].size * view->scale,
+            body_list[i].size * view->scale * 2
         );
     }
 }
