@@ -13,6 +13,10 @@ Currently, you have to edit the source code to add bodies to the simulation. You
 The source code already includes a solar system as an example.
 
 ### Key bindings
+`Right Click + Mouse`: Move camera
+
+`Mouse Wheel`: Zoom in/out
+
 `P`: Pause
 
 `C`: Center camera
