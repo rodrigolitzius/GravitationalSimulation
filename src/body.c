@@ -25,6 +25,11 @@ Body body_list[] = {
         {0, 0}, {-7, 0},
         {WINDOW_X_CENTER, 170}, 15, 1, {BLUE}, 0
     }, // Middle orbit
+
+    {
+        {0, 0}, {7, 0},
+        {WINDOW_X_CENTER, 10}, 30, 1, {WHITE}, 0
+    }
 };
 
 int body_count = sizeof(body_list) / sizeof(Body);
