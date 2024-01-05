@@ -11,8 +11,6 @@ event_handler_callback* callbacks;
 int callbacks_length = 0;
 
 void register_callback(event_handler_callback handler) {
-    printf("%d\n", callbacks_length+1);
-
     callbacks = realloc(callbacks, sizeof(event_handler_callback)*(callbacks_length+1));
     callbacks_length += 1;
 
@@ -35,6 +33,7 @@ void handle_events() {
 
 ////// On event //////
 void on_keydown(SDL_Event event, void* data) {
+    UNUSED(data);
     if (event.key.keysym.sym == SDLK_p) { pause = !pause; }
 
     if (event.key.keysym.sym == SDLK_c) {
@@ -44,14 +43,18 @@ void on_keydown(SDL_Event event, void* data) {
 }
 
 void on_mouseup(SDL_Event event, void* data) {
+    UNUSED(event);
+    UNUSED(data);
     SDL_SetRelativeMouseMode(SDL_FALSE);
 }
 
 void on_mousewheel(SDL_Event event, void* data) {
+    UNUSED(data);
     change_view_scale(event.wheel.y);
 }
 
 void on_mouse_motion(SDL_Event event, void* data) {
+    UNUSED(data);
     if (event.motion.state & SDL_BUTTON(3)) {
         SDL_SetRelativeMouseMode(SDL_TRUE);
         change_view((SDL_FPoint){event.motion.xrel, event.motion.yrel});
