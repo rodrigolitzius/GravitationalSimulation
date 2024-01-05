@@ -57,13 +57,14 @@ int main() {
 
         handle_events();
 
-        if (pause) { continue; }
-
         ///////////////////////////////////
         ///////////////////////////////////
         ///////////////////////////////////
 
-        update();
+        if (!pause) {
+            update();
+        }
+
         draw(renderer, view);
 
         // Updating window
