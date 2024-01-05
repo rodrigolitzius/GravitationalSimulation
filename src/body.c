@@ -95,7 +95,7 @@ void draw_bodies(SDL_Renderer* renderer, View* view) {
             },
 
             body_list[i].size * view->scale,
-            body_list[i].size * view->scale * 2
+            body_list[i].size * view->scale + 6
         );
     }
 }
