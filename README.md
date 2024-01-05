@@ -14,6 +14,7 @@ The source code already includes a solar system as an example.
 
 ### Key bindings
 `P`: Pause
+
 `C`: Center camera
 
 # Dependencies
