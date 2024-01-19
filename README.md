@@ -22,7 +22,7 @@ The source code already includes a solar system as an example.
 `C`: Center camera
 
 # Dependencies
-- SDL2
+- [SDL2](https://www.libsdl.org/)
 
 I will assume you know how to install the dependencies on your system.
 
@@ -33,5 +33,6 @@ This project has been developed on a Linux system, i don't know if it will work 
 ```
 $ git clone https://github.com/rodrigolitzius/GravitationalSimulation
 $ cd GravitationalSimulation
-$ sh compile-and-run.sh
+$ make
+$ ./main
 ```
