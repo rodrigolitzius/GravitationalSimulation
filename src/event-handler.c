@@ -11,6 +11,7 @@ event_handler_callback* callbacks;
 int callbacks_length = 0;
 
 void register_callback(event_handler_callback handler) {
+    // Reallocates memory to hold another event handler callback function
     callbacks = realloc(callbacks, sizeof(event_handler_callback)*(callbacks_length+1));
     callbacks_length += 1;
 
@@ -20,6 +21,7 @@ void register_callback(event_handler_callback handler) {
 void handle_events() {
     SDL_Event event;
 
+    // Polling events and calling their associated callback functions
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) { running = false; }
 
@@ -34,8 +36,11 @@ void handle_events() {
 ////// On event //////
 void on_keydown(SDL_Event event, void* data) {
     UNUSED(data);
+
+    // Pauses the game
     if (event.key.keysym.sym == SDLK_p) { pause = !pause; }
 
+    // Center view
     if (event.key.keysym.sym == SDLK_c) {
         set_view((SDL_FPoint){0, 0});
         set_view_scale(1);
@@ -45,18 +50,26 @@ void on_keydown(SDL_Event event, void* data) {
 void on_mouseup(SDL_Event event, void* data) {
     UNUSED(event);
     UNUSED(data);
+
+    // Ungrabs mouse
     SDL_SetRelativeMouseMode(SDL_FALSE);
 }
 
 void on_mousewheel(SDL_Event event, void* data) {
     UNUSED(data);
+
+    // Zooms/unzooms according to mouse wheel movement
     change_view_scale(event.wheel.y);
 }
 
 void on_mouse_motion(SDL_Event event, void* data) {
     UNUSED(data);
+
     if (event.motion.state & SDL_BUTTON(3)) {
+        // Grabs mouse
         SDL_SetRelativeMouseMode(SDL_TRUE);
+
+        // Changes the view according to mouse movement
         change_view((SDL_FPoint){event.motion.xrel, event.motion.yrel});
     }
 }
