@@ -1,15 +1,19 @@
-src_folder=./src
-obj_folder=./obj
+SRC=./src
+OBJ=./obj
 
-cc=gcc
-files=main.o functions.o body.o view.o event-handler.o
-cflags_warnings=-std=c17 -Wall -Wextra -pedantic -pedantic-errors
-cflags_libs=-lSDL2 -lm
-cflags=$(cflags_warnings) $(cflags_libs)
-output_file=main
+CC=gcc
+FILES=$(OBJ)/main.o $(OBJ)/functions.o $(OBJ)/body.o $(OBJ)/view.o $(OBJ)/event-handler.o
+CFLAGS_WARNINGS=-std=c17 -Wall -Wextra -pedantic -pedantic-errors
+CFLAGS_LIBS=-lSDL2 -lm
+CFLAGS=$(CFLAGS_WARNINGS) $(CFLAGS_LIBS)
 
-all: $(files)
-	$(cc) $(cflags) $(obj_folder)/*.o -o $(output_file)
+OUTPUT_FILE=main
 
-%.o: $(src_folder)/%.c
-	$(cc) $(cflags) -c $< -o $(obj_folder)/$@
+all: $(FILES)
+	$(CC) $(CFLAGS) $(OBJ)/*.o -o $(OUTPUT_FILE)
+
+$(OBJ)/%.o: $(SRC)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	@rm $(OBJ)/*
