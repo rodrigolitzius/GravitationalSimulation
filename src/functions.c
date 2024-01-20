@@ -131,7 +131,6 @@ void draw_background_grid(SDL_Renderer* renderer, View* view) {
         }
     }
 
-    SDL_SetRenderDrawColor(renderer, RED);
     ///// Horizontal Lines /////
     line_draw_offset = fmod(y_draw_offset, spacing);
 
