@@ -16,9 +16,16 @@
 
 #define UNUSED(x) (void)(x)
 
-#define PRINT_FPS_DELAY_FRAMES 180
+#define PRINT_FPS_DELAY_FRAMES MAX_FPS
 #define GRID_SPACING_PIXELS 20
 #define SCROLL_SPEED 0.333333333
+
+// CAREFUL. 
+// If you set this value too high and zoom out too much
+// the program will start to use too much memory to render 
+// the lines and your computer might freeze.
+// 150 is the recommended value
+#define GRID_LINES_LIMIT 150
 
 #define BACKGROUND_COLOR 0,0,0,255
 #define GRID_COLOR 20,20,20,255
