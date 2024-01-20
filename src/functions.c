@@ -1,3 +1,4 @@
+#include <SDL2/SDL_render.h>
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <stdio.h>
@@ -101,12 +102,42 @@ bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2
     return get_distance(pos1, pos2) <= radius1 + radius2;
 }
 
-void draw_background_grid(SDL_Renderer* renderer) {
-    for (int i=0; i < WINDOW_WIDTH; i+=GRID_SPACING_PIXELS) {
-        SDL_RenderDrawLine(renderer, i, 0, i, WINDOW_HEIGHT);
+void draw_background_grid(SDL_Renderer* renderer, View* view) {
+    const int lines_limit = 150;
+
+    double spacing = (double) GRID_SPACING_PIXELS * view->scale;
+    double horizontal_limit = (WINDOW_HEIGHT + spacing);
+    double vertical_limit = (WINDOW_WIDTH + spacing);
+    double x_draw_offset = (view->draw_offset.x * view->scale);
+    double y_draw_offset = (view->draw_offset.y * view->scale);
+
+    ///// Prevents crash /////
+    if ((vertical_limit / spacing) >= lines_limit) {
+        spacing = vertical_limit / lines_limit;
     }
 
-    for (int i=0; i < WINDOW_WIDTH; i+=GRID_SPACING_PIXELS) {
-        SDL_RenderDrawLine(renderer, 0, i, WINDOW_WIDTH, i);
+    if ((horizontal_limit / spacing) >= lines_limit) {
+        spacing = vertical_limit / lines_limit;
+    }
+
+    double line_draw_offset;
+
+    ///// Vertical Lines /////
+    line_draw_offset = fmod(x_draw_offset, spacing);
+
+    for (int i=0; i < vertical_limit; i += spacing) {
+        for (int k=0; k < WINDOW_HEIGHT; k++) {
+            SDL_RenderDrawPoint(renderer, line_draw_offset+i, k);
+        }
+    }
+
+    SDL_SetRenderDrawColor(renderer, RED);
+    ///// Horizontal Lines /////
+    line_draw_offset = fmod(y_draw_offset, spacing);
+
+    for (int i=0; i < horizontal_limit; i += spacing) {
+        for (int k=0; k < WINDOW_WIDTH; k++) {
+            SDL_RenderDrawPoint(renderer, k, line_draw_offset+i);
+        }
     }
 }

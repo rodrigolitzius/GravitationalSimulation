@@ -3,6 +3,7 @@
 
 #include "stdbool.h"
 #include "definitions.h"
+#include "view.h"
 
 // Initializes essential SDL stuff, like a window and a renderer
 void initialize(SDL_Window** window, SDL_Renderer** renderer);
@@ -24,6 +25,6 @@ double get_distance(SDL_FPoint pos1, SDL_FPoint pos2);
 bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2);
 
 // Draws the background grid
-void draw_background_grid(SDL_Renderer* renderer);
+void draw_background_grid(SDL_Renderer* renderer, View* view);
 
 #endif
