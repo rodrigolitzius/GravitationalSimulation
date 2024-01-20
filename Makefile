@@ -10,10 +10,10 @@ CFLAGS=$(CFLAGS_WARNINGS) $(CFLAGS_LIBS)
 OUTPUT_FILE=main
 
 all: $(FILES)
-	$(CC) $(CFLAGS) $(OBJ)/*.o -o $(OUTPUT_FILE)
+	$(CC) $(OBJ)/*.o -o $(OUTPUT_FILE) $(CFLAGS)
 
 $(OBJ)/%.o: $(SRC)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
 	@rm $(OBJ)/*
