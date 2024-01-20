@@ -8,27 +8,27 @@
 Body body_list[] = {
     {
         {0, 0}, {0, 0},
-        {WINDOW_CENTER}, 30, 10000000, {ORANGE}, 0
+        {350, 350}, 30, 10000000, {ORANGE}, 0
     }, // Sun
 
     {
         {0, 0}, {6, 0},
-        {WINDOW_X_CENTER, 60}, 20, 1, {DARK_BLUE}, 0
+        {350, 60}, 20, 1, {DARK_BLUE}, 0
     }, // Higher orbit
 
     {
         {0, 0}, {0, 11.5},
-        {(WINDOW_X_CENTER + 70), WINDOW_Y_CENTER}, 10, 1, {BROWN}, 0
+        {(350 + 70), 350}, 10, 1, {BROWN}, 0
     }, // Lower orbit
 
     {
         {0, 0}, {-7, 0},
-        {WINDOW_X_CENTER, 170}, 15, 1, {BLUE}, 0
+        {350, 170}, 15, 1, {BLUE}, 0
     }, // Middle orbit
 
     {
         {0, 0}, {7, 0},
-        {WINDOW_X_CENTER, 10}, 30, 1, {WHITE}, 0
+        {350, 10}, 30, 1, {WHITE}, 0
     }
 };
 
