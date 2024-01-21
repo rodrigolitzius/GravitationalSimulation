@@ -103,22 +103,17 @@ bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2
 }
 
 void draw_background_grid(SDL_Renderer* renderer, View* view) {
-    double spacing = (double) GRID_SPACING_PIXELS * view->scale;
+    double spacing = (double) GRID_INITIAL_SPACING * view->scale;
     double horizontal_limit = (WINDOW_HEIGHT + spacing);
     double vertical_limit = (WINDOW_WIDTH + spacing);
     double x_draw_offset = (view->draw_offset.x * view->scale);
     double y_draw_offset = (view->draw_offset.y * view->scale);
-
-    ///// Prevents crash /////
-    if ((vertical_limit / spacing) >= GRID_LINES_LIMIT) {
-        spacing = vertical_limit / GRID_LINES_LIMIT;
-    }
-
-    if ((horizontal_limit / spacing) >= GRID_LINES_LIMIT) {
-        spacing = vertical_limit / GRID_LINES_LIMIT;
-    }
-
     double line_draw_offset;
+
+    // Prevents crash
+    if (spacing <= GRID_MINIMUM_SPACING) {
+        spacing = GRID_MINIMUM_SPACING;
+    }
 
     ///// Vertical Lines /////
     line_draw_offset = fmod(x_draw_offset, spacing);
