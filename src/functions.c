@@ -7,8 +7,6 @@
 #include "view.h"
 
 void initialize(SDL_Window** window, SDL_Renderer** renderer) {
-    SDL_SetHint(SDL_HINT_VIDEODRIVER, "wayland,x11");
-
     // Initializing SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         fprintf(stderr, "Error initializing SDL: %s\n", SDL_GetError());
