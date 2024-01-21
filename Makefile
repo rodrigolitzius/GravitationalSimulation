@@ -1,19 +1,23 @@
+OUTPUT_FILE=main
 SRC=./src
-OBJ=./obj
+COMP=./comp
+
+FILES=$(wildcard $(SRC)/*.c)
+HEADERS=$(wildcard $(SRC)/*.h)
+OBJECTS=$(patsubst $(SRC)/%,$(COMP)/%,$(patsubst %.c,%.o,$(FILES)))
+DEPENDS=$(patsubst $(SRC)/%,$(COMP)/%,$(patsubst %.c,%.d,$(FILES)))
 
 CC=gcc
-FILES=$(OBJ)/main.o $(OBJ)/functions.o $(OBJ)/body.o $(OBJ)/view.o $(OBJ)/event-handler.o
 CFLAGS_WARNINGS=-std=c17 -Wall -Wextra -pedantic -pedantic-errors
 CFLAGS_LIBS=-lSDL2 -lm
 CFLAGS=$(CFLAGS_WARNINGS) $(CFLAGS_LIBS)
 
-OUTPUT_FILE=main
+all: $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(OUTPUT_FILE) $(CFLAGS)
 
-all: $(FILES)
-	$(CC) $(OBJ)/*.o -o $(OUTPUT_FILE) $(CFLAGS)
-
-$(OBJ)/%.o: $(SRC)/%.c
-	$(CC) -c $< -o $@ $(CFLAGS)
+-include $(DEPENDS)
+$(COMP)/%.o: $(SRC)/%.c Makefile
+	$(CC) -MMD -MP -c $< -o $@ $(CFLAGS)
 
 clean:
-	@rm $(OBJ)/*
+	@rm $(COMP)/*
