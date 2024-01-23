@@ -3,7 +3,6 @@ SRC=./src
 COMP=./comp
 
 FILES=$(wildcard $(SRC)/*.c)
-HEADERS=$(wildcard $(SRC)/*.h)
 OBJECTS=$(patsubst $(SRC)/%,$(COMP)/%,$(patsubst %.c,%.o,$(FILES)))
 DEPENDS=$(patsubst $(SRC)/%,$(COMP)/%,$(patsubst %.c,%.d,$(FILES)))
 
@@ -12,7 +11,11 @@ CFLAGS_WARNINGS=-std=c17 -Wall -Wextra -pedantic -pedantic-errors
 CFLAGS_LIBS=-lSDL2 -lm
 CFLAGS=$(CFLAGS_WARNINGS) $(CFLAGS_LIBS)
 
-all: $(OBJECTS)
+.PHONY: all clean
+
+all: $(OUTPUT_FILE)
+
+$(OUTPUT_FILE): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(OUTPUT_FILE) $(CFLAGS)
 
 -include $(DEPENDS)
