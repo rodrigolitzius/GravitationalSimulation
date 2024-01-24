@@ -8,9 +8,9 @@ typedef struct {
 } View;
 
 View* get_view();
-void set_view(SDL_FPoint draw_offset);
-void set_view_scale(double scale);
-void change_view(SDL_FPoint change);
-void change_view_scale(double change);
+void view_set_draw_offset(SDL_FPoint draw_offset);
+void view_set_scale(double scale);
+void view_change_draw_offset(SDL_FPoint change);
+void view_change_scale(double change);
 
 #endif

@@ -42,8 +42,8 @@ void on_keydown(SDL_Event event, void* data) {
 
     // Center view
     if (event.key.keysym.sym == SDLK_c) {
-        set_view((SDL_FPoint){0, 0});
-        set_view_scale(1);
+        view_set_draw_offset((SDL_FPoint){0, 0});
+        view_set_scale(1);
     }
 }
 
@@ -59,7 +59,7 @@ void on_mousewheel(SDL_Event event, void* data) {
     UNUSED(data);
 
     // Zooms/unzooms according to mouse wheel movement
-    change_view_scale(event.wheel.y);
+    view_change_scale(event.wheel.y);
 }
 
 void on_mouse_motion(SDL_Event event, void* data) {
@@ -70,6 +70,6 @@ void on_mouse_motion(SDL_Event event, void* data) {
         SDL_SetRelativeMouseMode(SDL_TRUE);
 
         // Changes the view according to mouse movement
-        change_view((SDL_FPoint){event.motion.xrel, event.motion.yrel});
+        view_change_draw_offset((SDL_FPoint){event.motion.xrel, event.motion.yrel});
     }
 }
