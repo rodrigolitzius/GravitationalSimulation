@@ -116,14 +116,14 @@ void draw_background_grid(SDL_Renderer* renderer, View* view) {
     ///// Vertical Lines /////
     line_draw_offset = fmod(x_draw_offset, spacing);
 
-    for (int i=0; i < vertical_limit; i += spacing) {
+    for (double i=0; i < vertical_limit; i += spacing) {
         SDL_RenderDrawLine(renderer, line_draw_offset+i, 0, line_draw_offset+i, WINDOW_HEIGHT);
     }
 
     ///// Horizontal Lines /////
     line_draw_offset = fmod(y_draw_offset, spacing);
 
-    for (int i=0; i < horizontal_limit; i += spacing) {
+    for (double i=0; i < horizontal_limit; i += spacing) {
         SDL_RenderDrawLine(renderer, 0, line_draw_offset+i, WINDOW_WIDTH, line_draw_offset+i);
     }
 }

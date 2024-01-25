@@ -24,8 +24,9 @@ void view_change_draw_offset(SDL_FPoint change) {
     view.draw_offset.y += (change.y / view.scale) * SCROLL_SPEED;
 }
 
-void view_change_scale(double change) {
-    view.scale += change * 0.05;
+void view_change_scale(double sign) {
+    view.scale += (view.scale / 50) * sign;
+
     if (view.scale < 0) {
         view.scale = 0;
     }
