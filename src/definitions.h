@@ -40,7 +40,7 @@
 
 #define GRAY 50,50,50,255
 
-#define ORANGE 253,213,0,255
+#define YELLOW 253,213,0,255
 #define BROWN 106,89,0,255
 #define DARK_BLUE 0,33,113,255
 
