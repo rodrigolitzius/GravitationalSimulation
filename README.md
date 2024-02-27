@@ -3,6 +3,12 @@ A simple SDL2 project to simulate Newtonian gravity. You can add as many bodies 
 
 Please understand that, for now, this is just a WIP project.
 
+
+
+https://github.com/rodrigolitzius/GravitationalSimulation/assets/60452545/e94f471a-b377-463b-94b8-04e2d04ef23a
+
+
+
 # How to play
 Currently, you have to edit the source code to add bodies to the simulation. You only have to add more structs to a struct array and it's done. I'll implement an easier way to do this in the future, though.
 
@@ -27,8 +33,8 @@ This project has been developed on a Linux system, i don't know if it will work 
 
 ### For Linux:
 ```
-$ git clone https://github.com/rodrigolitzius/GravitationalSimulation
-$ cd GravitationalSimulation
-$ make
-$ ./main
+git clone https://github.com/rodrigolitzius/GravitationalSimulation
+cd GravitationalSimulation
+make
+./main
 ```
