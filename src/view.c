@@ -5,7 +5,10 @@
 #include "definitions.h"
 #include "view.h"
 
-View view = {{0, 0}, 1};
+View view = {
+    {VIEW_INITIAL_X_OFFSET, VIEW_INITIAL_Y_OFFSET},
+    VIEW_INITIAL_SCALE
+};
 
 View* get_view() {
     return &view;
