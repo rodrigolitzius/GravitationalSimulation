@@ -14,10 +14,10 @@
 #define WINDOW_Y_CENTER (WINDOW_HEIGHT/2.0f)
 #define WINDOW_CENTER WINDOW_X_CENTER,WINDOW_Y_CENTER
 
+// Avoid compiler warning about unused variables
 #define UNUSED(x) (void)(x)
 
 #define PRINT_FPS_DELAY_FRAMES MAX_FPS
-#define SCROLL_SPEED 0.333333333
 
 // CAREFUL. 
 // If you set these values too low and zoom out too much
@@ -31,6 +31,7 @@
 #define VIEW_INITIAL_Y_OFFSET 0
 // How fast you zoom in/out the bigger the denominator the slower
 #define VIEW_SCALE_MULTIPLIER (1.0f/50)
+#define CAMERA_SPEED (1.0f/3)
 
 #define BACKGROUND_COLOR 0,0,0,255
 #define GRID_COLOR 20,20,20,255

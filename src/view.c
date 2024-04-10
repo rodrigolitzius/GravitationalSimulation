@@ -23,8 +23,8 @@ void view_set_scale(double scale) {
 }
 
 void view_change_draw_offset(SDL_FPoint change) {
-    view.draw_offset.x += (change.x / view.scale) * SCROLL_SPEED;
-    view.draw_offset.y += (change.y / view.scale) * SCROLL_SPEED;
+    view.draw_offset.x += (change.x / view.scale) * CAMERA_SPEED;
+    view.draw_offset.y += (change.y / view.scale) * CAMERA_SPEED;
 }
 
 void view_change_scale(double sign) {
