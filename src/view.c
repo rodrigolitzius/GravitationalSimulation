@@ -28,7 +28,7 @@ void view_change_draw_offset(SDL_FPoint change) {
 }
 
 void view_change_scale(double sign) {
-    view.scale += (view.scale / 50) * sign;
+    view.scale += (view.scale * VIEW_SCALE_MULTIPLIER) * sign;
 
     if (view.scale < 0) {
         view.scale = 0;

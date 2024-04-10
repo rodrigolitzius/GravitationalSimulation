@@ -29,6 +29,8 @@
 #define VIEW_INITIAL_SCALE 1
 #define VIEW_INITIAL_X_OFFSET 0
 #define VIEW_INITIAL_Y_OFFSET 0
+// How fast you zoom in/out the bigger the denominator the slower
+#define VIEW_SCALE_MULTIPLIER 1.0f/50
 
 #define BACKGROUND_COLOR 0,0,0,255
 #define GRID_COLOR 20,20,20,255
