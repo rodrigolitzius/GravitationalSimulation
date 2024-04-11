@@ -42,8 +42,8 @@ void on_keydown(SDL_Event event, void* data) {
 
     // Center view
     if (event.key.keysym.sym == SDLK_c) {
-        view_set_draw_offset((SDL_FPoint){0, 0});
-        view_set_scale(1);
+        view_set_draw_offset((SDL_FPoint){VIEW_INITIAL_X_OFFSET, VIEW_INITIAL_Y_OFFSET});
+        view_set_scale(VIEW_INITIAL_SCALE);
     }
 }
 
