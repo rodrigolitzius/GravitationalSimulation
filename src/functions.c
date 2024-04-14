@@ -1,7 +1,6 @@
-#include <SDL2/SDL_render.h>
-#include <math.h>
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "definitions.h"
 #include "view.h"

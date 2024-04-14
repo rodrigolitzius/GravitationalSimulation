@@ -1,6 +1,4 @@
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_rect.h>
 
 #include "definitions.h"
 #include "view.h"

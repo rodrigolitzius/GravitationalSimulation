@@ -2,7 +2,6 @@
 #define DEFINITIONS
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_pixels.h>
 #include <stdbool.h>
 
 #define PROGRAM_NAME "Gravitational Simulation"

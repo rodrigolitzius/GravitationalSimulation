@@ -1,5 +1,4 @@
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_rect.h>
+#include <SDL2/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
 

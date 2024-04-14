@@ -1,10 +1,7 @@
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_rect.h>
-#include <math.h>
+#include <SDL2/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <SDL2/SDL.h>
 
 #include "functions.h"
 #include "event-handler.h"
