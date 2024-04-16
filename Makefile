@@ -8,7 +8,7 @@ DEPENDS=$(patsubst $(SRC)/%,$(COMP)/%,$(patsubst %.c,%.d,$(FILES)))
 
 CC=gcc
 CFLAGS_WARNINGS=-std=c17 -Wall -Wextra -pedantic -pedantic-errors
-CFLAGS_LIBS=-lSDL2 -lm
+CFLAGS_LIBS=-lSDL2 -lm -O2
 CFLAGS=$(CFLAGS_WARNINGS) $(CFLAGS_LIBS)
 
 .PHONY: all clean
