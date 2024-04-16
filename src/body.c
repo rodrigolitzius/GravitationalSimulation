@@ -94,10 +94,10 @@ void draw_bodies(SDL_Renderer* renderer, View* view) {
         );
 
         draw_polygon(renderer, 
-            (SDL_FPoint){
-                (body_list[i].position.x + view->draw_offset.x) * view->scale,
-                (body_list[i].position.y + view->draw_offset.y) * view->scale
-            },
+            apply_view((SDL_FPoint){
+                (body_list[i].position.x),
+                (body_list[i].position.y)
+            }, view),
 
             body_list[i].size * view->scale,
             body_list[i].size * view->scale + 6

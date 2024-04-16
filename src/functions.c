@@ -100,29 +100,28 @@ bool collision_circle(SDL_FPoint pos1, SDL_FPoint pos2, int radius1, int radius2
 }
 
 void draw_background_grid(SDL_Renderer* renderer, View* view) {
-    double spacing = (double) GRID_INITIAL_SPACING * view->scale;
-    double horizontal_limit = (WINDOW_HEIGHT + spacing);
-    double vertical_limit = (WINDOW_WIDTH + spacing);
-    double x_draw_offset = (view->draw_offset.x * view->scale);
-    double y_draw_offset = (view->draw_offset.y * view->scale);
+    double line_spacing = (double) GRID_INITIAL_SPACING * view->scale;
+    double horizontal_limit = (WINDOW_HEIGHT + line_spacing);
+    double vertical_limit = (WINDOW_WIDTH + line_spacing);
     double line_draw_offset;
+    SDL_FPoint draw_offset = apply_view((SDL_FPoint){0, 0}, view);
 
     // Prevents crash
-    if (spacing <= GRID_MINIMUM_SPACING) {
-        spacing = GRID_MINIMUM_SPACING;
+    if (line_spacing <= GRID_MINIMUM_SPACING) {
+        line_spacing = GRID_MINIMUM_SPACING;
     }
 
     ///// Vertical Lines /////
-    line_draw_offset = fmod(x_draw_offset, spacing);
+    line_draw_offset = fmod(draw_offset.x, line_spacing);
 
-    for (double i=0; i < vertical_limit; i += spacing) {
+    for (double i=0; i < vertical_limit; i += line_spacing) {
         SDL_RenderDrawLine(renderer, line_draw_offset+i, 0, line_draw_offset+i, WINDOW_HEIGHT);
     }
 
     ///// Horizontal Lines /////
-    line_draw_offset = fmod(y_draw_offset, spacing);
+    line_draw_offset = fmod(draw_offset.y, line_spacing);
 
-    for (double i=0; i < horizontal_limit; i += spacing) {
+    for (double i=0; i < horizontal_limit; i += line_spacing) {
         SDL_RenderDrawLine(renderer, 0, line_draw_offset+i, WINDOW_WIDTH, line_draw_offset+i);
     }
 }

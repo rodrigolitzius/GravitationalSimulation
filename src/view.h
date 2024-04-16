@@ -12,5 +12,6 @@ void view_set_draw_offset(SDL_FPoint draw_offset);
 void view_set_scale(double scale);
 void view_change_draw_offset(SDL_FPoint change);
 void view_change_scale(double sign);
+SDL_FPoint apply_view(SDL_FPoint position, View* view);
 
 #endif
